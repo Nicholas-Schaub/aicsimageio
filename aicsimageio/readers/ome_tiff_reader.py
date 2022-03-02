@@ -97,7 +97,23 @@ class OmeTiffReader(TiffReader):
 
         # invalid OME XMl
         except XMLSchemaValidationError as e:
-            log.error(f"OME XML validation failed. Error: {e}")
+            log.error(f"OME XML validation failed. Error: {e}")  # @property
+            # def physical_pixel_sizes(self) -> PhysicalPixelSizes:
+            #     """
+            #     Returns
+            #     -------
+            #     sizes: PhysicalPixelSizes
+            #         Using available metadata, the floats representing physical pixel sizes for
+            #         dimensions Z, Y, and X.
+
+            #     Notes
+            #     -----
+            #     We currently do not handle unit attachment to these values. Please see the file
+            #     metadata for unit information.
+            #     """
+            #     return metadata_utils.physical_pixel_sizes(
+            #         self.metadata, self.current_scene_index
+            #     )
             return False
 
         # cant connect to external schema resource (no internet conection)
